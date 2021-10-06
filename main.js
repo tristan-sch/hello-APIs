@@ -1,9 +1,9 @@
 //https://medium.com/swlh/how-to-create-your-first-login-page-with-html-css-and-javascript-602dd71144f1
 
-
 // Declaring the variables for login page and error messages
 const loginForm = document.getElementById("login-form");
 const loginButton = document.getElementById("login-form-submit");
+const loginErrorMsgHolder = document.getElementById("login-error-msg-holder");
 const loginErrorMsg = document.getElementById("login-error-msg");
 const nav = document.getElementById("nav");
 const h1 = document.querySelector("h1");
@@ -31,24 +31,11 @@ const connectToLocalStorage = (element) =>{
     })
 }
 
-const connectToLocalStorage2 = (element) =>{
-    element.value = localStorage.getItem(element.name);
-    element.addEventListener("change", ()=>{ 
-        localStorage.setItem(element.name, element.value);
-    })
-}
-
-const connectToLocalStorage3 = (element) =>{
-    element.value = localStorage.getItem(element.name);
-    element.addEventListener("change", ()=>{ 
-        localStorage.setItem(element.name, element.value);
-    })
-}
-
 // Creating the Welcome page afer login
 const goWelcomePage = ()=>{ 
     h1.innerHTML = "Welcome to your note application";
     loginForm.innerHTML="";
+    loginErrorMsgHolder.innerHTML="";
     loginErrorMsg.innerHTML="";
     noteForm.innerHTML ="";
     noteForm2.innerHTML ="";
@@ -88,17 +75,22 @@ const goPage1 = () =>{
     <label for="title">Title: </label>
     <input type="text" id="title" name="subject">
     <br/>
-    <label for="text">Tell us what is on your mind: </label><br/>
+    <label for="text">Write your note: </label><br/>
     <textarea name="feedback" id="text" cols="50" rows="10"></textarea><br/>
     <input type="submit" id="submitButton" value="save note">
 `
+
+const submitButtonFunction1 = document.getElementById("submitButton");
+
+submitButtonFunction1.onclick = () => {
+    goPage1(); 
+}
+
 const newTitle = document.getElementById("title");
 const newFeedback = document.getElementById("text");
 connectToLocalStorage(newTitle);
 connectToLocalStorage(newFeedback);
 
-connectToLocalStorage(domTitle); 
-connectToLocalStorage(domFeedback);
 }
 
 const goPage2 = ()=>{ 
@@ -111,17 +103,22 @@ const goPage2 = ()=>{
     <label for="title2">Title: </label>
     <input type="text2" id="title2" name="subject2">
     <br/>
-    <label for="text2">Tell us what is on your mind: </label><br/>
+    <label for="text2">Write your note: </label><br/>
     <textarea name="feedback2" id="text2" cols="50" rows="10"></textarea><br/>
     <input type="submit" id="submitButton2" value="save note">
 `
+
+const submitButtonFunction2 = document.getElementById("submitButton2");
+
+submitButtonFunction2.onclick = () => {
+    goPage2(); 
+}
+
 const newTitle2 = document.getElementById("title2");
 const newFeedback2 = document.getElementById("text2");
-connectToLocalStorage2(newTitle2);
-connectToLocalStorage2(newFeedback2);
+connectToLocalStorage(newTitle2);
+connectToLocalStorage(newFeedback2);
 
-connectToLocalStorage2(domTitle2); 
-connectToLocalStorage2(domFeedback2);
 }
 
 const goPage3 = ()=>{ 
@@ -134,17 +131,21 @@ const goPage3 = ()=>{
     <label for="title3">Title: </label>
     <input type="text3" id="title3" name="subject3">
     <br/>
-    <label for="text3">Tell us what is on your mind: </label><br/>
+    <label for="text3">Write your note: </label><br/>
     <textarea name="feedback3" id="text3" cols="50" rows="10"></textarea><br/>
     <input type="submit" id="submitButton3" value="save note">
 `
+const submitButtonFunction3 = document.getElementById("submitButton3");
+
+submitButtonFunction3.onclick = () => {
+    goPage3(); 
+}
+
 const newTitle3 = document.getElementById("title3");
 const newFeedback3 = document.getElementById("text3");
-connectToLocalStorage3(newTitle3);
-connectToLocalStorage3(newFeedback3);
+connectToLocalStorage(newTitle3);
+connectToLocalStorage(newFeedback3);
 
-connectToLocalStorage3(domTitle3); 
-connectToLocalStorage3(domFeedback3);
 }
 
 // Creating this addEventListener to navigate with the back and forward button of the browser
